@@ -1,0 +1,59 @@
+$color: darkgreen;
+
+%text-template {
+     font-family: monospace;
+     color: $color;
+     font-weight: bold;
+}
+
+nav {
+    font-size: 30px;
+}
+
+body {
+    color: whitesmoke;
+}
+
+p {
+    @extend %text-template;
+    font-size: 16px;
+    text-align: justify;
+}
+
+#albums table, td, tr{
+    border: 1px solid darkgreen;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed
+}
+
+#firstrow {
+    @extend %text-template;
+    font-size: 32px;
+}
+
+a:hover {
+    background-color: darksalmon;
+}
+
+.bio {
+    margin-left: 5px;
+    text-align: justify;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        background-color: lightblue;
+    }
+}
+
+@media screen and (min-width: 801px) {
+    body {
+        background-color: darkgray;
+    }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
