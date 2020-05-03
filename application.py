@@ -8,6 +8,7 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
 
+
 @app.route("/")
 def index():
     # if request.method == "POST":
