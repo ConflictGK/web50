@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block head %}
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+<ul id="users">
+</ul>
+<form id="new-user" class="form-inline">
+    <input type="text" class="form-control" placeholder="Username" id="username">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
