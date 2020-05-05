@@ -19,16 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#createchannel').disabled = true;
     };
 
-    document.querySelector('#new-channel').onsubmit = () => {
-        const li = document.createElement('li');
-        li.innerHTML = document.querySelector('#channelname').value;
+    // Connect to websocket
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
+    socket.on('connect', () => {
+        document.querySelector('#createchannel').onclick = () => {
+            const channel = document.querySelector('#channelname').value;
+            socket.emit('create channel', {'channel': channel});
+            
+            document.querySelector('#channelname').value = '';
+            // Prevent form submitting  
+            return false;
+        };
+    });
+
+    socket.on('channels changed', channel => {
+        var li = document.createElement('li');
+        var link = "channel";
+        li.innerHTML = '<a href="' + link + '">' + channel  + '</a>';
         document.querySelector('#channels').append(li);
-
-        document.querySelector('#channelname').value = '';
-        document.querySelector('#createchannel').disabled = true;
-
-        // Stop form from submitting
-        return false;
-    };
-})
+    });
+});
